@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import menu.Order;
+import menu.OrderModel;
 
 
 /*
@@ -40,13 +40,12 @@ public class RestaurantController extends HttpServlet {
         // Here we're retrieving form content from form.html
         String c = request.getParameter("menuItems");
         
-        System.out.println(c);
         
         // Create a new instance of a model object
-        Order placeOrder = new Order();
+        OrderModel placeOrder = new OrderModel();
         
         // Set the Order
-        placeOrder.setOrderItems(c.trim());
+        placeOrder.setOrderItems(c);
         
         
         

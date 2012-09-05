@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author malasuk
  */
-public class Order {
+public class OrderModel {
     
     private List orderItems = new ArrayList();
     private String orderString = "";
@@ -21,7 +21,6 @@ public class Order {
         this.orderString = orderItems;
         System.out.println("Order Set: " + orderString);
     }
-    
     
     // get the menu
     public List getMenu(){

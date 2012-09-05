@@ -20,7 +20,7 @@
         <%
         out.println(request.getAttribute("menuItems"));
         %>
-            s
+            
         
     </body>
 </html>
