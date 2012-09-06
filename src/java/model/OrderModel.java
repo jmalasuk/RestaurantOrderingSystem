@@ -6,12 +6,16 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import db.DBManager;
 
 /**
  *
  * @author malasuk
  */
 public class OrderModel implements Serializable {
+    
+    // create db manager
+    private DBManager db = new DBManager();
     
     //private List orderItems = new ArrayList();
     private String fullname = "";
@@ -20,12 +24,7 @@ public class OrderModel implements Serializable {
     private String side = "";
     private String drink = "";
     
-    // set Order
-//    public void setOrderItems(String orderItems){
-//        //this.orderItems = orderItems;
-//        this.orderString = orderItems;
-//        System.out.println("Order Set: " + orderString);
-//    }
+
 
     public void setFullname(String fullname) {
         this.fullname = fullname;

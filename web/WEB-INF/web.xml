@@ -19,6 +19,15 @@
         <url-pattern>/Order.do</url-pattern>
     </servlet-mapping>
     
+    <!-- Added Servlet DBManager 
+    <servlet>
+        <servlet-name>DBManager</servlet-name>
+        <servlet-class>db.DBManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DBManager</servlet-name>
+    </servlet-mapping>-->
+    
     
     <servlet>
         <servlet-name>dispatcher</servlet-name>

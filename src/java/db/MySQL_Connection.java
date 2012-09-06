@@ -20,7 +20,7 @@ public class MySQL_Connection {
     
     
         // Method to Connect to DB
-    	public static void dbConnect() {
+    	public void dbConnect() {
 		// First instantiate and store an object of this class
 		MySQL_Connection db = new MySQL_Connection();
 
