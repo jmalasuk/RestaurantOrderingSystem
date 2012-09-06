@@ -20,11 +20,11 @@
        
         <%
         out.println("Thank you for your order");
-        out.print("Your main course: ");
+        out.print("<br>Your main course: ");
         out.println(request.getAttribute("main"));
-        out.print("Side Course");
+        out.print("<br>Side Course: ");
         out.println(request.getAttribute("side"));
-        out.print("Drink:");
+        out.print("<br>Drink:");
         out.println(request.getAttribute("drink"));
         %>
             

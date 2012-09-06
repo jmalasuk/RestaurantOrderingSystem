@@ -1,8 +1,9 @@
 /*
  * Model Class
  */
-package menu;
+package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  *
  * @author malasuk
  */
-public class OrderModel {
+public class OrderModel implements Serializable {
     
     //private List orderItems = new ArrayList();
     private String main = "";
