@@ -16,18 +16,26 @@
     <body>
         
         <h2>Restaurant Ordering System</h2>
-        
+       
         
             <!-- Order Form -->
             <div>
                 
-                <h3>Select Main Course </h3>
+                
                 <form id="menuItems" name="menuItems" method="POST" action="Order.do">
                 
+                    <!-- Name -->
+                    Full Name: <input type="text" name="fullname" />
+                    <br>
+                    <!-- Phone Number -->
+                    Phone Number: <input type="text" name="phone" />
+                    
+                    <br><br>
+                    <h3>Select Main Course </h3>
                     <table border="1" width="500px">
                         <tr>
                             <th>Selection</th>
-                            <th>Menu Option</th>
+                            <th>Main Course</th>
                         </tr>
                         
                         <tr>
@@ -94,6 +102,7 @@
                         
                         <br><br>
                         
+                        <!-- Submit -->
                         <input id="submit" name="submit" type="submit" value="Place Order">
                         
                 </form>

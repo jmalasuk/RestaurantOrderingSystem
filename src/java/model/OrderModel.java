@@ -14,6 +14,8 @@ import java.util.List;
 public class OrderModel implements Serializable {
     
     //private List orderItems = new ArrayList();
+    private String fullname = "";
+    private String phone = "";
     private String main = "";
     private String side = "";
     private String drink = "";
@@ -25,6 +27,14 @@ public class OrderModel implements Serializable {
 //        System.out.println("Order Set: " + orderString);
 //    }
 
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
     public void setMain(String main) {
         this.main = main;
     }

@@ -38,21 +38,29 @@ public class RestaurantController extends HttpServlet {
 
         // parameters are name attributes in view pages
         // Here we're retrieving form content from form.html
+        String fullname = request.getParameter("fullname");
+        String phone = request.getParameter("phone");
+        
         String main = request.getParameter("main");
         String side = request.getParameter("side");
         String drink = request.getParameter("drink");
+        
         
         
         // Create a new instance of a model object
         OrderModel placeOrder = new OrderModel();
         
         // Set the Order
+        placeOrder.setFullname(fullname);
+        placeOrder.setPhone(phone);
         placeOrder.setMain(main);
         placeOrder.setSide(side);
         placeOrder.setDrink(drink);
 
           
         // We can use attributes to store data for use on another page.
+        request.setAttribute("fullname", fullname);
+        request.setAttribute("phone", phone);
         request.setAttribute("main", main);
         request.setAttribute("side", side);
         request.setAttribute("drink", drink);
@@ -64,4 +72,8 @@ public class RestaurantController extends HttpServlet {
         view.forward(request, response);
     }
     
+    // Use a method to set all values - at some point
+    private void submitOrder(){
+        
+    }
 }

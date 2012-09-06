@@ -19,7 +19,8 @@ public class MySQL_Connection {
     private String password;
     
     
-    	public static void main(String[] args) {
+        // Method to Connect to DB
+    	public static void dbConnect() {
 		// First instantiate and store an object of this class
 		MySQL_Connection db = new MySQL_Connection();
 

@@ -19,12 +19,14 @@
 
        
         <%
-        out.println("Thank you for your order");
+        out.print("Thank you, " + request.getAttribute("fullname") + " for your order!<br>");
+        out.println("We will call you at: " + request.getAttribute("phone") + " when your order is completed.");
+        out.println("<br><br>");
         out.print("<br>Your main course: ");
         out.println(request.getAttribute("main"));
         out.print("<br>Side Course: ");
         out.println(request.getAttribute("side"));
-        out.print("<br>Drink:");
+        out.print("<br>Drink: ");
         out.println(request.getAttribute("drink"));
         %>
             
