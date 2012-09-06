@@ -14,11 +14,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>orderConfirm.jsp</h1>
+        <h2>Order Complete!</h2>
         
 
+       
         <%
-        out.println(request.getAttribute("menuItems"));
+        out.println("Thank you for your order");
+        out.print("Your main course: ");
+        out.println(request.getAttribute("main"));
+        out.print("Side Course");
+        out.println(request.getAttribute("side"));
+        out.print("Drink:");
+        out.println(request.getAttribute("drink"));
         %>
             
         

@@ -21,7 +21,7 @@
             <!-- Order Form -->
             <div>
                 
-                <h1>Select Meal</h1>
+                <h3>Select Main Course </h3>
                 <form id="menuItems" name="menuItems" method="POST" action="Order.do">
                 
                     <table border="1" width="500px">
@@ -32,55 +32,67 @@
                         
                         <tr>
                             <td>
-                                <input type="checkbox" name="menuItems" value="burger" />
+                                <input type="checkbox" name="main" value="burger" />
                             </td>
                             <td>Burger</td>
                         </tr>
                         
                         <tr>
                             <td>
-                                <input type="checkbox" name="menuItems" value="cheeseburger" />
+                                <input type="checkbox" name="main" value="cheeseburger" />
                             </td>
                             <td>Cheese Burger</td>
                         </tr>
                         
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="main" value="steak" />
+                            </td>
+                            <td>Steak</td>
+                        </tr>
                         
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="main" value="fish" />
+                            </td>
+                            <td>Fish</td>
+                        </tr>
                         
-                        <select>
-                               
-                            
-                        </select>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="main" value="taco" />
+                            </td>
+                            <td>Taco</td>
+                        </tr>
                         
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="main" value="pizza" />
+                            </td>
+                            <td>Pizza</td>
+                        </tr>
                         
-                        
-                        
-
-                        <% 
-/*
-                            List recs = (List)request.getAttribute("getMenu");
-                            Iterator it = recs.iterator();
-                            if (it == null){
-                                out.print("Error, Received Null from Menu");
-                            }else{
-                                
-                                while(it.hasNext()) {
-                                    // Notice we're outputting some HTML. Is that a good idea?
-                                    // Also, notice we do not cast the object returned by the
-                                    // iterator to a String. Why?
-                                    out.print("<tr>");
-                                    out.print("<th>CheckBoxes</th>");
-                                    out.print("<br>try: " + it.next());
-                                    out.print("</tr>");
-                                } 
-                            }
- */                           
-                        %>
-                 
-                        
-                    
                     </table>
+                    
+                    <br><br>
+                        
+                        <h3>Select Side </h3>
+                        <select name="side">
+                            <option value="soup">Soup</option>
+                            <option value="salad">Salad</option>                            
+                        </select>    
                         
                         <br /><br />
+                        
+                        <h3>Select Drink </h3>
+                        <select name="drink">
+                            <option value="soda">Soda</option>
+                            <option value="beer">Beer</option>  
+                            <option value="wine">Wine</option> 
+                            <option value="shot">Shot</option> 
+                        </select> 
+                        
+                        <br><br>
                         
                         <input id="submit" name="submit" type="submit" value="Place Order">
                         

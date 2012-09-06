@@ -38,25 +38,27 @@ public class RestaurantController extends HttpServlet {
 
         // parameters are name attributes in view pages
         // Here we're retrieving form content from form.html
-        String c = request.getParameter("menuItems");
+        String main = request.getParameter("main");
+        String side = request.getParameter("side");
+        String drink = request.getParameter("drink");
         
         
         // Create a new instance of a model object
         OrderModel placeOrder = new OrderModel();
         
         // Set the Order
-        placeOrder.setOrderItems(c);
-        
-        
-        
-        
+        placeOrder.setMain(main);
+        placeOrder.setSide(side);
+        placeOrder.setDrink(drink);
+
           
         // We can use attributes to store data for use on another page.
-        request.setAttribute("menuItems", c);
+        request.setAttribute("main", main);
+        request.setAttribute("side", side);
+        request.setAttribute("drink", drink);
         
         // This object lets you forward both the request and response
         // objects to a destination page
-        
         RequestDispatcher view =
                 request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);
