@@ -53,9 +53,18 @@ public class DBManager {
      * surround te statement in a try catch
      * idk about passing around the connection.  its kinda getting skechy
      */
-    public void setOrder(){
+    public void setOrder(String sql){
         Insert insert = new Insert();
-        insert.doInsert(conn, sql);
+        
+        try{
+            insert.doInsert(conn, sql);
+        }catch(Exception e){
+            // do something      
+        }finally{
+            // then do this
+        }
+        
+        
     }
         
         
