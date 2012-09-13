@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.OrderModel;
+import model.OrderService;
 
 
 /*
@@ -48,7 +48,7 @@ public class RestaurantController extends HttpServlet {
         
         
         // Create a new instance of a model object
-        OrderModel placeOrder = new OrderModel();
+        OrderService placeOrder = new OrderService();
         
         // Set the Order
         placeOrder.setFullname(fullname);
@@ -76,4 +76,6 @@ public class RestaurantController extends HttpServlet {
     private void submitOrder(){
         
     }
+    
+
 }

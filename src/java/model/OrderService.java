@@ -12,7 +12,7 @@ import db.DBManager;
  *
  * @author malasuk
  */
-public class OrderModel implements Serializable {
+public class OrderService implements Serializable {
     
     // create db manager
     private DBManager db = new DBManager();
@@ -45,10 +45,6 @@ public class OrderModel implements Serializable {
     public void setDrink(String drink) {
         this.drink = drink;
     }
-    
-    
-    
-    
-    
+        
     
 }

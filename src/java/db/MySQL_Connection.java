@@ -51,7 +51,7 @@ public class MySQL_Connection {
 			  // Now let the Driver Manager use the class to create a connection object
 			  // It figures this out from the url
 			  db.conn = DriverManager.getConnection(db.url, db.userName, db.password);
-                          System.out.println("Success!");
+                          System.out.println("Success! connectiong to Database. From MySQL_Connection.java");
 		}
 		catch ( ClassNotFoundException cnfex ) {
 		   System.err.println(
