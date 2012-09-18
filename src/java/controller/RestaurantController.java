@@ -8,12 +8,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.MenuItem;
 import model.OrderService;
 
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * This is the 'Main' Controller
+ * 
+ * what it does, im not quite sure yet
+ * - OrderController will handel communication reguarding the Order Process
+ *    - get menu
+ *    - save order <-- TODO
+ * 
  */
 
 /**
@@ -21,8 +27,17 @@ import model.OrderService;
  * @author malasuk
  */
 public class RestaurantController extends HttpServlet {
-    
-    private static final String RESULT_PAGE = "orderConfirm.jsp";
+
+
+    // Not sure if a controller should have a Constructor
+    public RestaurantController() {
+        super();  // added because Jim did
+        
+        // Get the menuList for the orderpage
+        System.out.println("*********************** Construction Restraunt Controller....................");
+
+    }
+
     
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -35,41 +50,32 @@ public class RestaurantController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html");
-
-        // parameters are name attributes in view pages
-        // Here we're retrieving form content from form.html
-        String fullname = request.getParameter("fullname");
-        String phone = request.getParameter("phone");
         
-        String main = request.getParameter("main");
-        String side = request.getParameter("side");
-        String drink = request.getParameter("drink");
+        // Debugging
+        System.out.println("********************* Running doPost in Controller.");
+        
+        // call method to Process the Request
+        processRequest(request, response);
+        
+    }
+    
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    	String destination = "/orderForm.jsp";
         
         
+        /*
+         * Shit happend here
+         */
+        destination = "/Order.do?action=init";
         
-        // Create a new instance of a model object
-        OrderService placeOrder = new OrderService();
         
-        // Set the Order
-        placeOrder.setFullname(fullname);
-        placeOrder.setPhone(phone);
-        placeOrder.setMain(main);
-        placeOrder.setSide(side);
-        placeOrder.setDrink(drink);
-
-          
-        // We can use attributes to store data for use on another page.
-        request.setAttribute("fullname", fullname);
-        request.setAttribute("phone", phone);
-        request.setAttribute("main", main);
-        request.setAttribute("side", side);
-        request.setAttribute("drink", drink);
+        // Redirect to destination page
+        RequestDispatcher dispatcher = 
+                getServletContext().getRequestDispatcher(destination);
+        dispatcher.forward(request, response);
         
-        // This object lets you forward both the request and response
-        // objects to a destination page
-        RequestDispatcher view =
-                request.getRequestDispatcher(RESULT_PAGE);
-        view.forward(request, response);
     }
     
     // Use a method to set all values - at some point
@@ -79,3 +85,5 @@ public class RestaurantController extends HttpServlet {
     
 
 }
+
+
