@@ -12,29 +12,30 @@ import model.MenuItem;
 import model.OrderService;
 
 
-/*
- * This is the 'Main' Controller
- * 
- * what it does, im not quite sure yet
- * - OrderController will handel communication reguarding the Order Process
- *    - get menu
- *    - save order <-- TODO
- * 
- */
 
-/**
+/** Main Controller
  *
  * @author malasuk
  */
 public class RestaurantController extends HttpServlet {
 
+    
+    /*
+     * Create the service class here.
+     * It was moved here from orderController
+     *
+     */
+    private OrderService orderService;
+    
+    
+    
 
-    // Not sure if a controller should have a Constructor
+    // Constructor
     public RestaurantController() {
         super();  // added because Jim did
         
-        // Get the menuList for the orderpage
-        System.out.println("*********************** Construction Restraunt Controller....................");
+        // Debugging
+        System.out.println("*********************** Constructing Restraunt Controller....................");
 
     }
 
@@ -51,25 +52,37 @@ public class RestaurantController extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html");
         
-        // Debugging
-        System.out.println("********************* Running doPost in Controller.");
+        // Process the Request
+        //processRequest(request, response);
         
-        // call method to Process the Request
-        processRequest(request, response);
+        if( request.getParameter("action").equals("init")) {
+                // initialize for first use
+    		init(request, response);
+    	} else if( request.getParameter("action").equals("placeOrder")) {
+    		// place the order
+                placeOrder(request, response);
+        }
         
     }
     
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    /* init()
+     * - This method runs when orderForm is called to initialize the DB
+     *  - gets the menu
+     * 
+     */
+    protected void init(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
     	String destination = "/orderForm.jsp";
+
+        // Get Values
+        List<MenuItem> menuList = orderService.getMenuList();
+	List<MenuItem> orderList = orderService.getOrderList();
         
         
-        /*
-         * Shit happend here
-         */
-        destination = "/Order.do?action=init";
-        
+        // set the attribute to retreive in orderForm.jsp
+        request.setAttribute("menuList", menuList);
+        request.setAttribute("orderList", orderList);                
         
         // Redirect to destination page
         RequestDispatcher dispatcher = 
@@ -78,12 +91,66 @@ public class RestaurantController extends HttpServlet {
         
     }
     
-    // Use a method to set all values - at some point
-    private void submitOrder(){
+    
+    
+    /* placeOrder()
+     * - This method is ran to place an order
+     * 
+     */
+    protected void placeOrder(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    	String destination = "/orderConfirm.jsp";
+
         
+        // Values to work with
+        List<MenuItem> menuList = orderService.getMenuList();
+	List<MenuItem> orderList = orderService.getOrderList();;
+        
+        // Get the checkboxes from orderForm.jsp
+        String[] orderedItems = request.getParameterValues("menuItems");
+        
+            /*
+             * Take the items the user ordered, and enter the menuItem() into
+             *  a List<MenuItem>
+             */
+            orderList.clear();
+            for(String item : orderedItems) {
+                for(MenuItem menuItem : menuList) {
+                    if(menuItem.getItemName().equals(item)) {
+                        orderList.add(menuItem);
+                        break;
+                    }
+                }   
+            }
+            
+            // Place the order if the user made a selection
+            if(orderList.size() > 0){
+                orderService.placeOrder();
+            }
+        
+        /* the order is placed    */
+        // Redirect to destination page
+        RequestDispatcher dispatcher = 
+                getServletContext().getRequestDispatcher(destination);
+        dispatcher.forward(request, response);
+            
     }
     
 
-}
+    /**
+     * Initialization of the servlet. <br>
+     *
+     * @throws ServletException if an error occurs
+     */
+    @Override
+    public void init() throws ServletException {
+        try{
+            orderService = new OrderService();
+        }catch(Exception e){
+            System.out.println("********************* Problem! Thrown in OrderController, while Initializing\n" + e );
+        }
 
+    }
+
+}
 

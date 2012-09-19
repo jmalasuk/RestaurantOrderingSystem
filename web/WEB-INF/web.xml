@@ -16,7 +16,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>RestaurantController</servlet-name>
-        <url-pattern>/Controller.load</url-pattern>
+        <url-pattern>/Controller.do</url-pattern>
     </servlet-mapping>
     
     

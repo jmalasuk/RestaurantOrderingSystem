@@ -15,9 +15,8 @@
         <h1>Restaurant Ordering System</h1>
         
         <p>
-            <a href="orderForm.jsp">Place an Order</a>
             
-            <form method="POST" action="Controller.load">               
+            <form method="POST" action="Controller.do?action=init">               
                 <!-- Place Order Button -->
                 <input type="submit" value="Place Order">
             </form>

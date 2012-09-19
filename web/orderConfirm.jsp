@@ -16,17 +16,13 @@
     <body>
         <h2>Order Complete!</h2>
         
-
-       
-        <%
-        out.print("Thank you, " + request.getAttribute("fullname") + " for your order!<br>");
-        out.println("We will call you at: " + request.getAttribute("phone") + " when your order is completed.");
-        out.println("<br><br>");
-        out.print("<br>Your main course: ");
         
 
-        %>
-            
+        <p>Thank you!<br>
+            Your order was successfully received!<br>
+            We will begin your order ASAP</p>
+       
+        <p><a href="index.jsp">Return to Home Page</a>     
         
     </body>
 </html>

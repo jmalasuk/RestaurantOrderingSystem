@@ -55,6 +55,11 @@ public class OrderService implements Serializable {
     }
 
     public List<MenuItem> getMenuList() {
+        if (menuList == null){
+            System.out.println("!**********************! Null menuList found in OrderService!\n Running menuList.clear();");
+            menuList.clear();
+        }
+        
         return menuList;
     }
 
@@ -63,6 +68,10 @@ public class OrderService implements Serializable {
     }
 
     public List<MenuItem> getOrderList() {
+        if (orderList == null){
+            System.out.println("!**********************! Null orderList found in OrderService!\n Running orderList.clear(); ");
+            orderList.clear();
+        }
         return orderList;
     }
 

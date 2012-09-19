@@ -5,6 +5,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,23 +15,38 @@ import javax.servlet.http.HttpServletResponse;
 import model.MenuItem;
 import model.OrderService;
 
-/**
+/* 
  *
  * @author Joseph Malasuk
  */
-public class OrderController extends HttpServlet{
+public class OrderController extends HttpServlet {
     
     private static final String RESULT_PAGE = "orderConfirm.jsp";
     
-    
-    // Create the Service Object
-    // - Service object creates Data Access Object
-    //  - DAO talks to the Database
+    /* This is the second time you are instaniating this!
+     * 
+     */
     private OrderService orderService;
+
+    // Where the Magic Happens
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException {
+
+
+        // Get the checkboxes from orderForm.jsp
+        String[] orderedItems = request.getParameterValues("menuItems");
+        
+        
+        //
+//        List<MenuItem> placeOrder = new ArrayList<MenuItem>();
+//        for (String s : orderedItems){
+//            placeOrder.
+//        }
+        
+    }
     
     
-    
-    
+        
     /* doPost
      * - Called when form is submitted
      * 
@@ -40,10 +56,9 @@ public class OrderController extends HttpServlet{
     throws ServletException, IOException {
         response.setContentType("text/html");
         
-
+        // call the method to do the work for the order
         processRequest(request, response);
-           
-        
+                   
         // This object lets you forward both the request and response
         // objects to a destination page
         RequestDispatcher view =
@@ -51,46 +66,18 @@ public class OrderController extends HttpServlet{
         view.forward(request, response);
     }
     
-    
-    // Where the Magic Happens
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-	    throws ServletException, IOException {
-        
-        	
-        List<MenuItem> menuList = orderService.getMenuList();
-	//List<MenuItem> orderList = orderService.getOrderList();
-        
-        // Get the 'Action' From Main Controller
-        String action = request.getParameter("action");
-        
-        if(action.equals("init")) {
-	    	// init the DB
-            
-                        
-        }else{
-            
-        }
-        
-        
-        
-    }
-    
-    
-    
-    
-    	/**
+
+
+
+
+	/**
 	 * Initialization of the servlet. <br>
 	 *
-	 * @throws ServletException if an error occurs
+	 * @throws ServletException if an error occure
 	 */
         @Override
 	public void init() throws ServletException {
-            try{
-                orderService = new OrderService();
-            }catch(Exception e){
-                System.out.println("********************* Problem! Thrown in OrderController, while Initializing\n" + e );
-            }
-            
+            orderService = new OrderService();
 	}
     
 }
