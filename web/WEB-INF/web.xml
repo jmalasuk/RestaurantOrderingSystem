@@ -7,8 +7,6 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    
-    
     <!-- Added RestaurantController -->
     <servlet>
         <servlet-name>RestaurantController</servlet-name>
@@ -18,19 +16,7 @@
         <servlet-name>RestaurantController</servlet-name>
         <url-pattern>/Controller.do</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Added OrderController -->
-    <servlet>
-        <servlet-name>OrderController</servlet-name>
-        <servlet-class>controller.OrderController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>OrderController</servlet-name>
-        <url-pattern>/Order.do</url-pattern>
-    </servlet-mapping>
-    
-    
     <!-- Added Servlet DBManager 
     <servlet>
         <servlet-name>DBManager</servlet-name>
@@ -39,8 +25,6 @@
     <servlet-mapping>
         <servlet-name>DBManager</servlet-name>
     </servlet-mapping>-->
-    
-    
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -55,11 +39,7 @@
             30
         </session-timeout>
     </session-config>
-    
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
-    
-    
 </web-app>
